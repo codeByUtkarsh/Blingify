@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart, updateCart } from "@/redux/slices/cartSlice";
+import {
+  addToCart,
+  removeFromCart,
+  updateCart,
+} from "@/redux/slices/cartSlice";
+import Image from "next/image"; // Import Image from Next.js
 import "@/app/globals.css";
 
 export default function ShoppingCart() {
@@ -14,7 +19,9 @@ export default function ShoppingCart() {
   const [totalItems, setTotalItems] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
-  const [shippingMethod, setShippingMethod] = useState("Standard Delivery - $5.00");
+  const [shippingMethod, setShippingMethod] = useState(
+    "Standard Delivery - $5.00"
+  );
 
   useEffect(() => {
     setIsClient(true);
@@ -26,7 +33,8 @@ export default function ShoppingCart() {
       });
     }
 
-    const storedQuantities = JSON.parse(localStorage.getItem("quantities")) || {};
+    const storedQuantities =
+      JSON.parse(localStorage.getItem("quantities")) || {};
     const initialQuantities = cartItems.reduce((acc, item) => {
       acc[item.id] = storedQuantities[item.id] || 1;
       return acc;
@@ -78,7 +86,10 @@ export default function ShoppingCart() {
     );
     setSubtotal(newSubtotal);
     setTotalItems(
-      Object.values(updatedQuantities).reduce((acc, quantity) => acc + quantity, 0)
+      Object.values(updatedQuantities).reduce(
+        (acc, quantity) => acc + quantity,
+        0
+      )
     );
   };
 
@@ -95,10 +106,12 @@ export default function ShoppingCart() {
               className="flex items-center bg-white rounded-lg shadow-md p-4"
             >
               <Link href={`/products/${item.id}`} passHref>
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
                   className="w-24 h-24 object-cover rounded-lg mr-4 cursor-pointer"
+                  width={96}
+                  height={96} // Specify width and height for optimization
                 />
               </Link>
               <div className="flex-grow">
@@ -181,7 +194,3 @@ export default function ShoppingCart() {
     </div>
   );
 }
-
-
-
-

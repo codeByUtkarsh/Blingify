@@ -22,16 +22,16 @@ const CategoryNav = ({ onCategoryClick }) => {
         Jewellery
       </button>
       <button
-        onClick={() => onCategoryClick("men's clothing")}
+        onClick={() => onCategoryClick("men&apos;s clothing")}
         className="border border-gray-300 rounded-lg px-4 py-2 text-gray-700 hover:text-blue-500 hover:border-blue-500 transition duration-300"
       >
-        Men's Clothing
+        Men&apos;s Clothing
       </button>
       <button
-        onClick={() => onCategoryClick("women's clothing")}
+        onClick={() => onCategoryClick("women&apos;s clothing")}
         className="border border-gray-300 rounded-lg px-4 py-2 text-gray-700 hover:text-blue-500 hover:border-blue-500 transition duration-300"
       >
-        Women's Clothing
+        Women&apos;s Clothing
       </button>
     </nav>
   );

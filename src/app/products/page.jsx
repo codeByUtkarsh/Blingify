@@ -1,8 +1,11 @@
-"use client"
-import { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "@/redux/slices/productSlice";
-import { fetchProducts, fetchProductsByCategory } from "@/services/productService";
+import {
+  fetchProducts,
+  fetchProductsByCategory,
+} from "@/services/productService";
 import ProductCard from "@/components/product/productCard";
 import SortBy from "@/components/product/SortBy";
 import SearchBar from "@/components/home/SearchBar";
@@ -21,23 +24,27 @@ const Home = () => {
   const productsPerPage = 6;
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadProducts = async (selectedCategory = "") => {
-    setIsLoading(true);
-    setCategory(selectedCategory);
-    let fetchedProducts;
+  // Define loadProducts using useCallback to memoize it
+  const loadProducts = useCallback(
+    async (selectedCategory = "") => {
+      setIsLoading(true);
+      setCategory(selectedCategory);
+      let fetchedProducts;
 
-    if (selectedCategory) {
-      fetchedProducts = await fetchProductsByCategory(selectedCategory);
-    } else {
-      fetchedProducts = await fetchProducts();
-    }
-    dispatch(setProducts(fetchedProducts));
-    setIsLoading(false);
-  };
+      if (selectedCategory) {
+        fetchedProducts = await fetchProductsByCategory(selectedCategory);
+      } else {
+        fetchedProducts = await fetchProducts();
+      }
+      dispatch(setProducts(fetchedProducts));
+      setIsLoading(false);
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     loadProducts(category);
-  }, [category]);
+  }, [category, loadProducts]); // Add loadProducts as a dependency
 
   useEffect(() => {
     const pageTitle = searchTerm
@@ -198,4 +205,3 @@ const Home = () => {
 };
 
 export default Home;
-

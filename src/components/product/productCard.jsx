@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/redux/slices/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingCart,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import "@/app/globals.css";
+import Image from "next/image";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -42,10 +46,13 @@ const ProductCard = ({ product }) => {
     <div className="bg-white text-gray-800 p-4 rounded-3xl shadow-md hover:shadow-lg transform transition-transform duration-300 hover:scale-105 w-full sm:w-80 lg:w-96 h-auto mx-auto">
       <div className="relative overflow-hidden rounded-2xl h-44">
         <Link href={`/products/${product.id}`}>
-          <img
+          <Image
             src={product.image}
             alt={product.title}
             className="w-full h-full object-cover rounded-2xl"
+            width={500}
+            height={500}
+            quality={75}
           />
         </Link>
       </div>
@@ -64,7 +71,8 @@ const ProductCard = ({ product }) => {
             onClick={handleAddToCart}
             className="bg-gradient-to-r from-green-200 via-blue-800 to-blue-400 text-white font-normal px-4 py-2 rounded-full transition-transform duration-300 hover:bg-gradient-to-r hover:from-green-300 hover:via-blue-400 hover:to-blue-500 hover:-translate-y-1 active:translate-y-0 shadow-lg hover:shadow-xl"
             style={{
-              background: "linear-gradient(to right, #a0eac4, #7fd1f7, #57c1eb)",
+              background:
+                "linear-gradient(to right, #a0eac4, #7fd1f7, #57c1eb)",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
               border: "none",
             }}

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const Footer = () => {
   return (
     <footer className="mt-10 bg-gradient-to-r from-[#c1e1c5] via-[#a8d8b9] to-[#c1e1c5] py-8 text-gray-800">
@@ -38,25 +40,40 @@ const Footer = () => {
           <p className="text-gray-700">From App Store or Google Play</p>
           <div className="flex gap-4 mt-2">
             <div className="bg-white p-2 rounded shadow">
-              <img src="/app.jpg" alt="App Store" className="w-28" />
+              <Image src="/app.jpg" alt="App Store" width={112} height={32} />
             </div>
             <div className="bg-white p-2 rounded shadow">
-              <img src="/play.jpg" alt="Google Play" className="w-28" />
+              <Image
+                src="/play.jpg"
+                alt="Google Play"
+                width={112}
+                height={32}
+              />
             </div>
           </div>
           <p className="mt-4 text-gray-700">Secured Payment Gateways</p>
           <div className="flex gap-2 mt-2">
             <div className="bg-white p-2 rounded shadow">
-              <img src="/visa.png" alt="Visa" className="w-12" />
+              <Image src="/visa.png" alt="Visa" width={48} height={32} />
             </div>
             <div className="bg-white p-2 rounded shadow">
-              <img src="/mastercard.png" alt="MasterCard" className="w-12" />
+              <Image
+                src="/mastercard.png"
+                alt="MasterCard"
+                width={48}
+                height={32}
+              />
             </div>
             <div className="bg-white p-2 rounded shadow">
-              <img src="/maestro.png" alt="Maestro" className="w-12" />
+              <Image src="/maestro.png" alt="Maestro" width={48} height={32} />
             </div>
             <div className="bg-white p-2 rounded shadow">
-              <img src="/amex.png" alt="American Express" className="w-12" />
+              <Image
+                src="/amex.png"
+                alt="American Express"
+                width={48}
+                height={32}
+              />
             </div>
           </div>
         </div>
@@ -72,4 +89,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
