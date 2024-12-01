@@ -7,7 +7,7 @@ import {
   fetchProductsByCategory,
 } from "@/services/productService";
 import ProductCard from "@/components/product/productCard";
-import SortBy from "@/components/product/SortBy";
+import SortBy from "../../components/product/sortBy";
 import SearchBar from "@/components/home/SearchBar";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
