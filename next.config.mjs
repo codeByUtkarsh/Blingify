@@ -2,12 +2,14 @@
 const nextConfig = {
   webpack(config, { isServer }) {
     if (!isServer) {
-      // Disable CSS minification during production build
       config.optimization.minimizer = [];
     }
     return config;
   },
-  // Other configurations as needed
+
+  images: {
+    domains: ["fakestoreapi.com"],
+  },
 };
 
 export default nextConfig;
